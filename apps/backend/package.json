@@ -5,9 +5,16 @@
   "author": "Rohit Luthra <rohit.luthra19@gmail.com>",
   "keywords": [],
   "license": "ISC",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "./bin/app",
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx watch bin/app.ts",
+    "start": "node dist/index.js",
+    "start:local": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -16,5 +23,12 @@
     "pino": "^9.9.5",
     "pino-http": "^10.5.0",
     "pino-pretty": "^13.1.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.15.3",
+    "tslib": "^2.8.1",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
   }
 }
