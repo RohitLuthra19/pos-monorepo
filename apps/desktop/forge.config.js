@@ -6,7 +6,9 @@ module.exports = {
     asar: true,
     extraResource: [
       // include built web assets so main.js can load them from resources
-      require("path").resolve(__dirname, "../web/dist"),
+      //require("path").resolve(__dirname, "../web/dist"),
+      // include built mobile assets so main.js can load them from resources
+      require("path").resolve(__dirname, "../mobile/dist"),
     ],
   },
   rebuildConfig: {},

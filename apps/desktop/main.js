@@ -15,12 +15,12 @@ function createMainWindow() {
   const isDev = !app.isPackaged;
 
   if (isDev) {
-    const devServerUrl =
-      process.env.VITE_DEV_SERVER_URL || "http://localhost:5173";
-    mainWindow.loadURL(devServerUrl);
+    const expoDevServerUrl =
+      process.env.EXPO_DEV_SERVER_URL || "http://localhost:8081";
+    mainWindow.loadURL(expoDevServerUrl);
     mainWindow.webContents.openDevTools({ mode: "detach" });
   } else {
-    const indexHtml = path.join(process.resourcesPath, "dist", "index.html");
+    const indexHtml = path.join(process.resourcesPath, "mobile", "index.html");
     mainWindow.loadFile(indexHtml);
   }
 
@@ -38,4 +38,3 @@ app.whenReady().then(() => {
 app.on("window-all-closed", function () {
   if (process.platform !== "darwin") app.quit();
 });
-

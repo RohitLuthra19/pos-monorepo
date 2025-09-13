@@ -5,11 +5,15 @@
   "main": "main.js",
   "scripts": {
     "dev:web": "pnpm --filter web dev",
-    "dev": "concurrently -n api,web,desktop -c magenta,blue,green \"pnpm --filter backend dev\" \"pnpm --filter web dev\" \"cross-env VITE_DEV_SERVER_URL=http://localhost:5173 electron-forge start\"",
+    "dev:mobile": "pnpm --filter mobile start --web",
+    "dev:backend": "pnpm --filter backend dev",
+    "dev:desktop-only": "cross-env EXPO_DEV_SERVER_URL=http://localhost:8081 electron-forge start",
+    "dev": "concurrently -n api,mobile,desktop -c magenta,blue,green \"pnpm --filter backend dev\" \"pnpm --filter mobile start --web\" \"cross-env EXPO_DEV_SERVER_URL=http://localhost:8081 electron-forge start\"",
     "build:web": "pnpm --filter web build",
+    "build:mobile": "pnpm --filter mobile export",
     "start": "electron .",
-    "package": "pnpm run build:web && electron-forge package",
-    "make": "pnpm run build:web && electron-forge make",
+    "package": "pnpm run build:mobile && electron-forge package",
+    "make": "pnpm run build:mobile && electron-forge make",
     "build": "pnpm run make"
   },
   "dependencies": {
