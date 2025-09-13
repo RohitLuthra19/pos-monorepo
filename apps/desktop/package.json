@@ -9,6 +9,7 @@
     "dev:backend": "pnpm --filter backend dev",
     "dev:desktop-only": "cross-env EXPO_DEV_SERVER_URL=http://localhost:8081 electron-forge start",
     "dev": "concurrently -n api,mobile,desktop -c magenta,blue,green \"pnpm --filter backend dev\" \"pnpm --filter mobile start --web\" \"cross-env EXPO_DEV_SERVER_URL=http://localhost:8081 electron-forge start\"",
+    "dev:mobile-backend": "concurrently -n api,mobile -c magenta,blue \"pnpm --filter backend dev\" \"pnpm --filter mobile start --web\"",
     "build:web": "pnpm --filter web build",
     "build:mobile": "pnpm --filter mobile export",
     "start": "electron .",
